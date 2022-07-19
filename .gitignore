@@ -1,0 +1,7 @@
+__pycache__
+*.egg-info
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+sftp-config.json
+app_secret.py
