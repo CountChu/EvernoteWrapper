@@ -6,6 +6,9 @@ import evernote.edam.type.ttypes as Types
 import evernote.edam.notestore.ttypes as NoteStore
 from evernote.api.client import EvernoteClient
 
+import pdb 
+br = pdb.set_trace
+
 class EvernoteWrapper:
 
     def __init__(self):
@@ -115,7 +118,9 @@ class EvernoteWrapper:
     def search_notes_by_tag(self, tag):
         
         filter = NoteStore.NoteFilter()   
-        filter.words = 'tag:%s' % tag
+        #filter.words = 'tag:%s' % tag   # [BUGBUG] This way has limit of 128 results.
+        filter.tagGuids = [tag]
+
 
         note_meta_list = self.__findAllNotes(filter)
 
