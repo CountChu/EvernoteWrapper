@@ -6,3 +6,4 @@ __pycache__
 sftp-config*.json
 app_secret.py
 .gitignore
+test_secret.py
