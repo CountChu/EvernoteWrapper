@@ -6,7 +6,7 @@ The project depends on [CountPackage](https://github.com/CountChu/CountPackage).
 
 # Installation
 ## Install the package
-[PyTemplates/BuildPackage/package1]
+[EvernoteWrapper]
 
 ```
 $ pip install .
