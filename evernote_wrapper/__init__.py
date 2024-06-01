@@ -155,7 +155,16 @@ class EvernoteWrapper:
 
         note_meta_list = self.__findAllNotes(filter)
 
-        return note_meta_list               
+        return note_meta_list      
+
+    def search_updated_notes_within_days(self, days):        
+        filter = NoteStore.NoteFilter()   
+        filter.words = 'updated:day-%d' % days
+        logging.info('words = %s' % filter.words)
+
+        note_meta_list = self.__findAllNotes(filter)
+
+        return note_meta_list                  
 
     def get_note_content(self, guid):
         content = self.note_store.getNoteContent(self.auth_token, guid)
@@ -180,6 +189,24 @@ class EvernoteWrapper:
                     False, 
                     False)
         return note
+
+    def check_note_exists(self, guid):
+        try:
+            note = self.note_store.getNote(
+                    self.auth_token, 
+                    guid, 
+                    False, 
+                    False, 
+                    False, 
+                    False)
+
+            if not note.active:
+                return False
+            else:
+                return True
+
+        except Exception as e:
+            return False
 
     def update_note(self, note):
         self.note_store.updateNote(self.auth_token, note)
